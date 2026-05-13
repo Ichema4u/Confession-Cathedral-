@@ -3,6 +3,7 @@ import { Send } from 'lucide-react';
 
 export default function ConfessionForm({ onSubmit }) {
   const [nickname, setNickname] = useState('');
+  const [gender, setGender] = useState('');
   const [text, setText] = useState('');
 
   const charCount = text.length;
@@ -16,11 +17,13 @@ export default function ConfessionForm({ onSubmit }) {
 
     onSubmit({
       nickname: nickname.trim() || 'Anonymous',
+      gender,
       text: text.trim(),
     });
     
     setText('');
     setNickname('');
+    setGender('');
   };
 
   return (
@@ -38,6 +41,22 @@ export default function ConfessionForm({ onSubmit }) {
           className="w-full px-4 py-3 rounded-2xl bg-warm-50 border border-warm-200 focus:outline-none focus:ring-2 focus:ring-warm-500 focus:border-transparent transition-all placeholder:text-warm-300"
           maxLength={50}
         />
+      </div>
+
+      <div className="mb-5">
+        <label htmlFor="gender" className="block text-sm font-semibold text-warm-700 mb-2">
+          I am a…
+        </label>
+        <select
+          id="gender"
+          value={gender}
+          onChange={(e) => setGender(e.target.value)}
+          className="w-full px-4 py-3 rounded-2xl bg-warm-50 border border-warm-200 focus:outline-none focus:ring-2 focus:ring-warm-500 focus:border-transparent transition-all text-warm-800 appearance-none cursor-pointer"
+        >
+          <option value="">Prefer not to say</option>
+          <option value="He">He (Male)</option>
+          <option value="She">She (Female)</option>
+        </select>
       </div>
 
       <div className="mb-6 relative">

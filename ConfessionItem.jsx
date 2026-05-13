@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, format } from 'date-fns';
 import { Edit2, Check, X } from 'lucide-react';
 
 export default function ConfessionItem({ confession, onEdit }) {
@@ -33,9 +33,18 @@ export default function ConfessionItem({ confession, onEdit }) {
     >
       <div className="flex justify-between items-start mb-4">
         <div>
-          <h3 className="font-bold text-warm-900 text-lg">{confession.nickname}</h3>
+          <div className="flex items-center gap-2 flex-wrap">
+            <h3 className="font-bold text-warm-900 text-lg">{confession.nickname}</h3>
+            {confession.gender && (
+              <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-warm-100 text-warm-600 border border-warm-200">
+                {confession.gender}
+              </span>
+            )}
+          </div>
           <span className="text-xs text-warm-500 font-medium tracking-wide uppercase">
             {formatDistanceToNow(new Date(confession.timestamp), { addSuffix: true })}
+            {' · '}
+            {format(new Date(confession.timestamp), 'dd MMM yyyy, h:mm a')}
             {confession.isEdited && ' (edited)'}
           </span>
         </div>
