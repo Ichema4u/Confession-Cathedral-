@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-warm-50: #fdf8f6;
+  --color-warm-100: #f2e8e5;
+  --color-warm-200: #eaddd7;
+  --color-warm-300: #e0cec7;
+  --color-warm-400: #d2bab0;
+  --color-warm-500: #a18072;
+  --color-warm-600: #977669;
+  --color-warm-700: #846358;
+  --color-warm-800: #43302b;
+  --color-warm-900: #291812;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-warm-50);
+    color: var(--color-warm-900);
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(circle at top, var(--color-warm-50) 0%, var(--color-warm-100) 100%);
+    min-height: 100vh;
+    margin: 0;
+  }
+}
